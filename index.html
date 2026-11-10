@@ -283,11 +283,12 @@ var mb=document.getElementById('mb'),mn=document.getElementById('menu');
 mb.addEventListener('click',function(){var o=mn.classList.toggle('aberto');mb.setAttribute('aria-expanded',o)});
 mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.remove('aberto');mb.setAttribute('aria-expanded',false)}});
 
-var EXT=['.jpg','.jpeg','.png','.webp','.jpg.jpeg'];
-function achar(base,ok){var i=0;(function t(){if(i>=EXT.length)return;var im=new Image(),u=base+EXT[i++];im.onload=function(){ok(u)};im.onerror=t;im.src=u})()}
-achar('foto-topo',function(u){document.getElementById('inicio').style.setProperty('--hero-img','url("'+u+'")')});
-achar('foto-casa',function(u){var m=document.getElementById('moldura');m.style.backgroundImage='url("'+u+'")';m.classList.add('tem-foto')});
-document.querySelectorAll('.prato[data-foto]').forEach(function(el){achar(el.dataset.foto,function(u){el.querySelector('.foto').style.backgroundImage='url("'+u+'")';el.classList.add('tem-foto')})});
+var EXT=['.png','.jpg','.jpeg','.webp','.jpg.jpeg'];
+function achar(bases,ok){var l=[];bases.forEach(function(b){EXT.forEach(function(e){l.push(b+e)})});var i=0;(function t(){if(i>=l.length)return;var im=new Image(),u=l[i++];im.onload=function(){ok(u)};im.onerror=t;im.src=u})()}
+achar(['foto-topo','fototopo'],function(u){document.getElementById('inicio').style.setProperty('--hero-img','url("'+u+'")')});
+achar(['foto-casa','fotocasa'],function(u){var m=document.getElementById('moldura');m.style.backgroundImage='url("'+u+'")';m.classList.add('tem-foto')});
+var NOMES={'foto-entradas':['foto-entradas','entradas'],'foto-massas':['foto-massas','massas'],'foto-risotos':['foto-risotos','risotos','risoto']};
+document.querySelectorAll('.prato[data-foto]').forEach(function(el){achar(NOMES[el.dataset.foto],function(u){el.querySelector('.foto').style.backgroundImage='url("'+u+'")';el.classList.add('tem-foto')})});
 </script>
 </body>
 </html>
