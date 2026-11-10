@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BONA – Gastronomia Italiana | Foz do Iguaçu</title>
+<meta name="description" content="Entradas, massas e risotos em ambientes batizados com nomes de cidades e regiões italianas. Rua Almirante Barroso, 883, Centro, Foz do Iguaçu - PR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ====== CONFIGURAÇÃO (troque aqui) ====== */
+/* FOTOS: coloque as fotos na MESMA pasta do index.html com estes nomes: foto-topo, foto-casa, foto-entradas, foto-massas, foto-risotos (em .jpg, .jpeg, .png ou .webp). O site usa sozinho as que existirem. */
+:root{
+  --verde:#0e2b25; --verde2:#16403a; --terra:#b4532a; --terra2:#d0743f;
+  --papel:#f3ebdc; --osso:#fbf7ef; --ouro:#c9a45c; --tinta:#1b2420;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;color:var(--tinta);background:var(--osso);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.08}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+
+/* topo */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(14,43,37,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,164,92,.25)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:.22em;color:var(--osso);text-decoration:none;font-weight:600}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{color:#e9dfcb;text-decoration:none;font-size:15px;letter-spacing:.04em}
+nav a:hover{color:var(--ouro)}
+.menu-btn{display:none;background:none;border:1px solid var(--ouro);color:var(--osso);padding:8px 14px;border-radius:6px;font:inherit;cursor:pointer}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:var(--osso);background:
+  radial-gradient(900px 500px at 85% 20%,rgba(208,116,63,.55),transparent 60%),
+  radial-gradient(700px 500px at 0% 100%,rgba(22,64,58,.9),transparent 70%),
+  linear-gradient(160deg,#0a201b 0%,#14382f 55%,#5a2a16 130%);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:var(--hero-img,none) center/cover no-repeat;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,26,22,.88) 0%,rgba(8,26,22,.35) 70%,rgba(8,26,22,.15) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-top:110px;padding-bottom:90px}
+.hero h1{font-size:clamp(46px,8.2vw,104px);max-width:12ch;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--terra2)}
+.hero p.lead{max-width:46ch;margin:26px 0 36px;font-size:19px;font-weight:300;color:#efe6d3}
+.rating{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,164,92,.55);padding:10px 18px;border-radius:999px;font-size:15px;margin-bottom:30px;background:rgba(8,26,22,.45)}
+.stars{color:var(--ouro);letter-spacing:2px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;text-decoration:none;padding:15px 30px;border-radius:999px;font-weight:500;font-size:16px;letter-spacing:.03em;border:1.5px solid transparent;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--terra);color:#fff}.btn-main:hover{background:var(--terra2)}
+.btn-line{border-color:var(--ouro);color:var(--osso)}.btn-line:hover{background:rgba(201,164,92,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
+.chips span{font-size:14px;padding:6px 14px;border-radius:999px;background:rgba(251,247,239,.1);border:1px solid rgba(251,247,239,.25)}
+
+/* seções */
+section{padding:110px 0}
+.titulo{font-size:clamp(38px,5.4vw,64px);color:var(--terra);margin-bottom:22px}
+.sobre{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+.sobre p{margin-bottom:18px;max-width:52ch}
+.moldura{aspect-ratio:4/5;border-radius:220px 220px 14px 14px;background:linear-gradient(180deg,var(--verde2),var(--verde));position:relative;display:grid;place-items:center;color:var(--ouro);overflow:hidden;border:6px solid var(--papel);box-shadow:0 0 0 1px var(--ouro)}
+.moldura svg{width:62%;opacity:.9}
+.moldura .sel{position:absolute;bottom:26px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--osso);text-align:center;padding:0 20px}
+.cardapio{background:var(--papel)}
+.cardapio .intro{max-width:60ch;margin-bottom:54px}
+.pratos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(180,83,42,.35)}
+.prato{padding:44px 34px;text-align:center}
+.prato+.prato{border-left:1px solid rgba(180,83,42,.35)}
+.prato svg{width:54px;height:54px;color:var(--terra);margin-bottom:18px}
+.prato h3{font-size:36px;color:var(--verde);margin-bottom:8px}
+.prato p{font-size:15.5px;color:#4a544f}
+.cta-center{text-align:center;margin-top:48px}
+.ambientes{background:var(--verde);color:var(--osso);text-align:center}
+.ambientes .titulo{color:var(--osso)}
+.ambientes p{max-width:58ch;margin:0 auto 14px;font-weight:300;color:#e3d9c4;font-size:18px}
+.ornamento{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--ouro);margin:0 0 30px}
+.ornamento::before,.ornamento::after{content:"";width:90px;height:1px;background:var(--ouro);opacity:.7}
+.nota{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;max-width:860px;margin:0 auto}
+.nota .num{font-family:'Cormorant Garamond',serif;font-size:clamp(90px,14vw,170px);color:var(--terra);line-height:.9}
+.nota .stars{font-size:26px}
+.nota p{color:#47504b}
+.contato{background:var(--terra);color:#fff;padding-bottom:90px}
+.contato .titulo{color:#fff;text-align:center;margin-bottom:50px}
+.grid-contato{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
+.mapa{width:100%;height:420px;border:0;border-radius:12px;background:#d8cdb8;display:block}
+.info div{margin-bottom:30px}
+.info h3{font-size:30px;margin-bottom:4px;color:var(--osso)}
+.info p,.info a{font-size:18px;font-weight:300;text-decoration:none}
+.info a.tel{border-bottom:1px solid rgba(255,255,255,.5)}
+.info .btns{margin-top:6px}
+.contato .btn-main{background:var(--verde)}.contato .btn-main:hover{background:var(--verde2)}
+.contato .btn-line{border-color:#fff;color:#fff}
+footer{background:#081a16;color:#bcb29c;text-align:center;padding:34px 24px 110px;font-size:14.5px}
+footer b{color:var(--osso);font-family:'Cormorant Garamond',serif;letter-spacing:.2em;font-size:22px;font-weight:600}
+
+/* botões flutuantes */
+.flutuantes{position:fixed;right:0;bottom:90px;z-index:60;display:flex;flex-direction:column;gap:12px}
+.flutuantes a{padding:13px 22px 13px 20px;border-radius:999px 0 0 999px;color:#fff;font-weight:500;font-size:15px;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+.f-pedir{background:#c0392b}.f-reservar{background:#17614f}
+.barra-mobile{display:none}
+
+.moldura.tem-foto{background-size:cover;background-position:center}
+.moldura.tem-foto svg,.moldura.tem-foto .sel{display:none}
+.prato .foto{display:none;aspect-ratio:4/3;margin:-44px -34px 26px;background:center/cover no-repeat}
+.prato.tem-foto .foto{display:block}
+.prato.tem-foto>svg{display:none}
+.horarios{width:100%;border-collapse:collapse;font-size:17px;font-weight:300}
+.horarios td{padding:5px 0}
+.horarios td:last-child{text-align:right;font-weight:400}
+.info small{display:block;margin-top:8px;font-size:14.5px;opacity:.85}
+/* entrada do topo (único movimento) */
+@media (prefers-reduced-motion:no-preference){
+  .hero .wrap>*{animation:sobe .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero .wrap>*:nth-child(2){animation-delay:.12s}.hero .wrap>*:nth-child(3){animation-delay:.24s}
+  .hero .wrap>*:nth-child(4){animation-delay:.36s}.hero .wrap>*:nth-child(5){animation-delay:.48s}
+  @keyframes sobe{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+}
+
+@media (max-width:860px){
+  body{font-size:16.5px}
+  section{padding:76px 0}
+  .menu-btn{display:block}
+  nav ul{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:var(--verde);padding:8px 24px 18px;border-bottom:1px solid var(--ouro)}
+  nav ul.aberto{display:flex}
+  nav li a{display:block;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .sobre,.grid-contato{grid-template-columns:1fr;gap:40px}
+  .moldura{max-width:380px;margin:0 auto;width:100%}
+  .pratos{grid-template-columns:1fr}
+  .prato+.prato{border-left:0;border-top:1px solid rgba(180,83,42,.35)}
+  .nota{grid-template-columns:1fr;gap:12px;text-align:center}
+  .mapa{height:320px}
+  .flutuantes{display:none}
+  .barra-mobile{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px;background:var(--verde);border-top:1px solid var(--ouro)}
+  .barra-mobile a{flex:1;text-align:center;padding:13px 6px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;color:#fff}
+  .barra-mobile .a1{background:var(--terra)}.barra-mobile .a2{background:#17614f}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio" aria-label="BONA – início">BONA</a>
+    <button class="menu-btn" id="mb" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav aria-label="Principal">
+      <ul id="menu">
+        <li><a href="#sobre">A casa</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#ambientes">Ambientes</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><span>4,7 · 4.020 avaliações no Google</span></div>
+    <h1>Gastronomia <em>italiana</em> em Foz do Iguaçu</h1>
+    <p class="lead">Entradas, massas e risotos servidos em ambientes de clima requintado, batizados com nomes de cidades e regiões da Itália.</p>
+    <div class="btns">
+      <a class="btn btn-main" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20BONA." target="_blank" rel="noopener">Reservar mesa</a>
+      <a class="btn btn-line" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+    </div>
+    <div class="chips"><span>Refeição no local</span><span>Para viagem</span><span>Entrega sem contato</span></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap sobre">
+    <div>
+      <h2 class="titulo">A casa</h2>
+      <p>O BONA é um restaurante italiano no Centro de Foz do Iguaçu, feito para quem gosta de comer bem sem pressa.</p>
+      <p>A cozinha trabalha entradas, massas e risotos. Cada ambiente da casa leva o nome de uma cidade ou região italiana, com clima requintado do começo ao fim da refeição.</p>
+      <p>Venha almoçar ou jantar, leve para viagem ou receba em casa com entrega sem contato.</p>
+    </div>
+    <div class="moldura" id="moldura" role="img" aria-label="Ilustração de prato de massa">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="50" cy="56" r="30"/><circle cx="50" cy="56" r="21"/><path d="M36 52c4-6 8 6 12 0s8 6 12 0 6 4 8 2M34 60c4-6 8 6 12 0s8 6 12 0M20 22v20M16 22v8c0 3 2 5 4 5s4-2 4-5v-8M84 22c-3 4-4 10-4 16h4v20"/></svg>
+      <div class="sel">Boa mesa, boa companhia</div>
+    </div>
+  </div>
+</section>
+
+<section class="cardapio" id="cardapio">
+  <div class="wrap">
+    <h2 class="titulo">Cardápio</h2>
+    <p class="intro">Três frentes de uma cozinha italiana: para abrir a mesa, para o prato principal e para quem prefere um risoto cremoso. Pergunte pelos pratos e valores do dia.</p>
+    <div class="pratos">
+      <div class="prato" data-foto="foto-entradas">
+        <div class="foto"></div>
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 38h48c0 10-9 18-24 18S8 48 8 38zM20 30c0-6 6-6 6-12M32 30c0-6 6-6 6-12M44 30c0-6 6-6 6-12" transform="translate(-4 0)"/></svg>
+        <h3>Entradas</h3><p>Para começar a refeição e dividir à mesa.</p>
+      </div>
+      <div class="prato" data-foto="foto-massas">
+        <div class="foto"></div>
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="32" cy="34" r="22"/><path d="M16 32c5-6 8 6 13 0s8 6 13 0 6 4 8 2M18 40c5-6 8 6 13 0s8 6 13 0"/></svg>
+        <h3>Massas</h3><p>Massas italianas para o prato principal.</p>
+      </div>
+      <div class="prato" data-foto="foto-risotos">
+        <div class="foto"></div>
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 30h44c0 14-9 24-22 24S10 44 10 30zM22 22c0-4 4-4 4-8M34 22c0-4 4-4 4-8"/><path d="M24 40h16"/></svg>
+        <h3>Risotos</h3><p>Risotos cremosos, no ponto certo.</p>
+      </div>
+    </div>
+    <div class="cta-center"><a class="btn btn-main" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Poderia%20me%20enviar%20o%20card%C3%A1pio%3F" target="_blank" rel="noopener">Pedir o cardápio pelo WhatsApp</a></div>
+  </div>
+</section>
+
+<section class="ambientes" id="ambientes">
+  <div class="wrap">
+    <div class="ornamento" aria-hidden="true">✦</div>
+    <h2 class="titulo">Ambientes com nome de Itália</h2>
+    <p>Cada espaço do BONA recebe o nome de uma cidade ou região italiana.</p>
+    <p>Escolha o seu lugar ao reservar e aproveite um clima requintado, do primeiro prato à sobremesa.</p>
+    <div class="cta-center"><a class="btn btn-line" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Quero%20entrar%20na%20lista%20de%20espera%20ou%20reservar." target="_blank" rel="noopener">Reservar ou entrar na lista de espera</a></div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="wrap nota">
+    <div class="num">4,7</div>
+    <div>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <h2 class="titulo" style="font-size:clamp(30px,4vw,46px);margin:8px 0 10px">Nota dos clientes no Google</h2>
+      <p>Mais de 4 mil pessoas já avaliaram o BONA no Google Maps, com nota média de 4,7 em 5.</p>
+      <p style="margin-top:18px"><a class="btn btn-main" href="https://www.google.com/maps/search/?api=1&query=BONA+Gastronomia+Italiana+Foz+do+Igua%C3%A7u" target="_blank" rel="noopener">Ver avaliações no Google</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="wrap">
+    <h2 class="titulo">Contato</h2>
+    <div class="grid-contato">
+      <iframe class="mapa" title="Mapa do BONA – Gastronomia Italiana" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=R.+Almirante+Barroso,+883,+Centro,+Foz+do+Igua%C3%A7u+-+PR,+85851-010&output=embed"></iframe>
+      <div class="info">
+        <div>
+          <h3>Endereço</h3>
+          <p>Rua Almirante Barroso, 883<br>Centro, Foz do Iguaçu – PR<br>CEP 85851-010</p>
+          <p style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=R.+Almirante+Barroso,+883,+Centro,+Foz+do+Igua%C3%A7u+-+PR" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(255,255,255,.5)">Abrir no Google Maps</a></p>
+        </div>
+        <div>
+          <h3>Telefone e WhatsApp</h3>
+          <p><a class="tel" href="tel:+5545999247162">(45) 99924-7162</a></p>
+        </div>
+        <div>
+          <h3>Horário</h3>
+          <table class="horarios">
+            <tr><td>Segunda a sábado</td><td>11h30 às 23h</td></tr>
+            <tr><td>Domingo</td><td>11h30 às 22h</td></tr>
+          </table>
+          <small>Em feriados os horários podem ser diferentes. Confirme pelo WhatsApp.</small>
+        </div>
+        <div class="btns">
+          <a class="btn btn-main" href="https://wa.me/5545999247162" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn btn-line" href="tel:+5545999247162">Ligar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <b>BONA</b><br>Gastronomia Italiana · Foz do Iguaçu – PR<br>© <span id="ano"></span> BONA – Gastronomia Italiana
+</footer>
+
+<div class="flutuantes">
+  <a class="f-pedir" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir</a>
+  <a class="f-reservar" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa." target="_blank" rel="noopener">Reservas</a>
+</div>
+<div class="barra-mobile">
+  <a class="a1" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Pedir</a>
+  <a class="a2" href="https://wa.me/5545999247162?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa." target="_blank" rel="noopener">Reservar mesa</a>
+</div>
+
+<script>
+document.getElementById('ano').textContent=new Date().getFullYear();
+var mb=document.getElementById('mb'),mn=document.getElementById('menu');
+mb.addEventListener('click',function(){var o=mn.classList.toggle('aberto');mb.setAttribute('aria-expanded',o)});
+mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.remove('aberto');mb.setAttribute('aria-expanded',false)}});
+
+var EXT=['.png','.jpg','.jpeg','.webp','.jpg.jpeg',''];
+function achar(bases,ok){var l=[];bases.forEach(function(b){EXT.forEach(function(e){l.push(b+e)})});var i=0;(function t(){if(i>=l.length)return;var im=new Image(),u=l[i++];im.onload=function(){ok(u)};im.onerror=t;im.src=u})()}
+achar(['foto-topo','fototopo'],function(u){document.getElementById('inicio').style.setProperty('--hero-img','url("'+u+'")')});
+achar(['foto-casa','fotocasa'],function(u){var m=document.getElementById('moldura');m.style.backgroundImage='url("'+u+'")';m.classList.add('tem-foto')});
+var NOMES={'foto-entradas':['foto-entradas','entradas'],'foto-massas':['foto-massas','massas'],'foto-risotos':['foto-risotos','risotos','risoto']};
+document.querySelectorAll('.prato[data-foto]').forEach(function(el){achar(NOMES[el.dataset.foto],function(u){el.querySelector('.foto').style.backgroundImage='url("'+u+'")';el.classList.add('tem-foto')})});
+</script>
+</body>
+</html>
